@@ -1,0 +1,12 @@
+runtime: nodejs12
+
+service: goodlife-booking
+
+handlers:
+- url: /.*
+  secure: always
+  script: auto
+
+env_variables:
+  PORT: 8080
+  NODE_ENV: 'production'

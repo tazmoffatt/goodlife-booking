@@ -1,0 +1,15 @@
+steps:
+  # install dependencies
+- name: 'gcr.io/cloud-builders/npm'
+  args: ['install']
+  # build the container image
+- name: 'node'
+  entrypoint: 'npm'
+  args: ['run', 'build']
+  # deploy to app engine
+- name: "gcr.io/cloud-builders/gcloud"
+  args: ["app", "deploy"]
+  env:
+  - 'PORT=8080'
+  - 'NODE_ENV=production'
+timeout: "1600s"
